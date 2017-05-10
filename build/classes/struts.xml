@@ -5,8 +5,26 @@
 <struts>
     <package name="example" namespace="/" extends="struts-default">
         <default-action-ref name="index"></default-action-ref>
-        <action name="index">
-            <result>views/HelloWorld.jsp</result>
+        <action name="index" class="s6.frameop.action.IndexAction" method="index">
+            <result name="ok">views/index.jsp</result>
+            <result name="redirect" type="redirect">loginview</result>
+        </action>
+        <action name="loginview" class="s6.frameop.action.SessionAction" method="loginview">
+           	<result>views/login.jsp</result>
+        </action>
+        <action name="login" class="s6.frameop.action.SessionAction" method="login">
+           	<result type="redirect">index</result>
+           	<result name="error" type="redirect">loginview</result>
+        </action>
+        <action name="disconnect" class="s6.frameop.action.SessionAction" method="logout">
+            <result type="redirect">loginview</result>
+        </action>
+        <action name="signinview" class="s6.frameop.action.SigninAction" method="signinview">
+            <result>views/register.jsp</result>
+        </action>
+        <action name="signin" class="s6.frameop.action.SigninAction" method="signin">
+            <result type="redirect">loginview</result>
+            <result name="error" type="redirect">signinview</result>
         </action>
     </package>
 </struts>
