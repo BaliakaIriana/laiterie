@@ -3,9 +3,8 @@ package s6.frameop.action;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 
-public class IndexAction extends ActionSupport {
+public class IndexAction extends BaseAction {
 
 	/**
 	 * 
@@ -17,7 +16,21 @@ public class IndexAction extends ActionSupport {
 		if(session.get("logged") == null){
 			return "redirect";
 		}
+		setPage("index");
 		return "ok";
 	}
+	public String test(){
+		setPage("test");
+		System.out.println(getPage());
+		return SUCCESS;
+	}
 
+	public String getPage() {
+		return page;
+	}
+
+	public void setPage(String page) {
+		this.page = page;
+	}
+	
 }

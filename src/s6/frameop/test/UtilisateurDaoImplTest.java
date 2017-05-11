@@ -14,13 +14,25 @@ public class UtilisateurDaoImplTest extends TestCase{
 	public void testSave() {
 		UtilisateurDaoImpl dao = new UtilisateurDaoImpl();
 		Utilisateur u = new Utilisateur();
+		u.setId(50);
 		u.setEmail("baliaka.iriana@gmail.com");
 		u.setNom("Baliaka Iriana");
-		u.setPrivilege(0);
+		u.setPrivilege(1);
 		u.setPassword("blk");
 		try {
-//			dao.save(u);
+			dao.save(u);
 			List<Utilisateur> utilisateurList = dao.all();
+			for (Utilisateur utilisateur : utilisateurList) {
+				System.out.println(utilisateur);
+			}
+			u.setPrivilege(0);
+			dao.update(u);
+			utilisateurList = dao.all();
+			for (Utilisateur utilisateur : utilisateurList) {
+				System.out.println(utilisateur);
+			}
+			dao.delete(u);
+			utilisateurList = dao.all();
 			for (Utilisateur utilisateur : utilisateurList) {
 				System.out.println(utilisateur);
 			}

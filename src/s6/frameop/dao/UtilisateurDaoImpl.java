@@ -43,19 +43,17 @@ public class UtilisateurDaoImpl implements IUtilisateurDao {
 
 	@Override
 	public void delete(Utilisateur critere) {
-		// TODO Auto-generated method stub
-
+		dao.delete(critere);
 	}
 
 	@Override
 	public void update(Utilisateur critere) {
-		// TODO Auto-generated method stub
-
+		dao.update(critere);
 	}
 
 	@Override
 	public Utilisateur get(int id) throws Exception {
-		HibernateDao dao = new HibernateDao();
+		dao = new HibernateDao();
 		Utilisateur u = new Utilisateur(id);
 		dao.findById(u);
 		return u;

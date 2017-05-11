@@ -89,5 +89,43 @@ public class HibernateDao {
                 session.close();
         }
     }
+    
+    public void update(Data obj){
+    	Session session = null;
+    	Transaction tr = null;
+    	try{
+    		session = getSessionFactory().openSession();
+    		tr = session.beginTransaction();
+        	session.update(obj);
+        	tr.commit();
+    	}catch(Exception e){
+    		if(tr != null){
+    			tr.rollback();
+    		}
+    	}finally{
+    		if(session != null){
+    			session.close();
+    		}
+    	}
+    	
+    }
+    public void delete(Data obj){
+    	Session session = null;
+    	Transaction tr = null;
+    	try{
+    		session = getSessionFactory().openSession();
+    		tr = session.beginTransaction();
+        	session.delete(obj);
+        	tr.commit();
+    	}catch(Exception e){
+    		if(tr != null){
+    			tr.rollback();
+    		}
+    	}finally{
+    		if(session != null){
+    			session.close();
+    		}
+    	}
+    }
 
 }

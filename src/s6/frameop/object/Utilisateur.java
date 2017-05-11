@@ -8,6 +8,7 @@ public class Utilisateur extends Data{
 	String email;
 	String password;
 	int privilege;
+	int statut;
 	
 	
 	
@@ -50,6 +51,13 @@ public class Utilisateur extends Data{
 	}
 	public void setPrivilege(int privilege) {
 		this.privilege = privilege;
+	}
+	
+	public int getStatut() {
+		return statut;
+	}
+	public void setStatut(int statut) {
+		this.statut = statut;
 	}
 	@Override
 	public String toString() {

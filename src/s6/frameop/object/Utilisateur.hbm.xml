@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="s6.frameop.object.Utilisateur" table="utilisateurvalide">
+    <class name="s6.frameop.object.Utilisateur" table="utilisateur">
         <id name="id" type="int" column="idutilisateur">
             <generator class="identity">
             </generator>
@@ -12,5 +12,6 @@
         <property name="email" column="email" type="string"/>
         <property name="password" column="password" type="string"/>
         <property name="privilege" column="privilege" type="int"/>
+        <property name="statut" column="statut" type="int"/>
     </class>
 </hibernate-mapping>

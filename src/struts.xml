@@ -3,10 +3,14 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+    
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+	<constant name="struts.patternMatcher" value="regex" />
     <package name="example" namespace="/" extends="struts-default">
         <default-action-ref name="index"></default-action-ref>
         <action name="index" class="s6.frameop.action.IndexAction" method="index">
-            <result name="ok">views/index.jsp</result>
+            <result name="ok">views/template.jsp</result>
             <result name="redirect" type="redirect">loginview</result>
         </action>
         <action name="loginview" class="s6.frameop.action.SessionAction" method="loginview">
@@ -26,5 +30,17 @@
             <result type="redirect">loginview</result>
             <result name="error" type="redirect">signinview</result>
         </action>
+     	<action name="inscriptions" class="s6.frameop.action.SigninAction" method="listinsc">
+            <result>views/template.jsp</result>
+        </action>
+        <action name="activate-account/{idinscription}" class="s6.frameop.action.SigninAction" method="activate">
+            <result type="redirect">inscriptions</result>
+        </action>
+        
+        <action name="test" class="s6.frameop.action.IndexAction" method="test">
+            <result>views/template.jsp</result>
+        </action>
+        
     </package>
+    
 </struts>
